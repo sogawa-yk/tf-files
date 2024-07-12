@@ -6,15 +6,15 @@ control_plane_count = 1
 
 control_plane_shape = "VM.Standard.E4.Flex"
 
-control_plane_ocpu = 1
+control_plane_ocpu = 2
 
-control_plane_memory = 16
+control_plane_memory = 32
 
 control_plane_boot_size = 1024
 
 control_plane_boot_volume_vpus_per_gb = 90
 
-compute_count = 2
+compute_count = 1
 
 compute_shape = "VM.Standard.E4.Flex"
 
