@@ -47,3 +47,5 @@ public_cidr = "10.0.0.0/20"
 openshift_image_source_uri = "https://objectstorage.ap-seoul-1.oraclecloud.com/p/YDcMb_eYIryZUapcSfr1q9txhHkv1tgx6U3heQjA_Ub0kx6FXLXbsQZpVvVWS9iF/n/orasejapan/b/forOpenShift/o/1721000c-91c3-4ffb-a70c-a64345a4dc3e-discovery.iso"
 
 enable_private_dns = false
+
+dynamic_group_name = "member-yuki.sogawa_dynamic_group"
