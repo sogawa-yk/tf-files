@@ -10,7 +10,7 @@ control_plane_ocpu = 2
 
 control_plane_memory = 32
 
-control_plane_boot_size = 1024
+control_plane_boot_size = 512 # 1024
 
 control_plane_boot_volume_vpus_per_gb = 90
 
