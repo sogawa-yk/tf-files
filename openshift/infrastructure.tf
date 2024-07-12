@@ -729,7 +729,7 @@ resource "oci_identity_policy" "openshift_control_plane_nodes" {
     "Allow dynamic-group ${var.dynamic_group_name} to use virtual-network-family in compartment id ${var.compartment_ocid}",
     "Allow dynamic-group ${var.dynamic_group_name} to manage load-balancers in compartment id ${var.compartment_ocid}",
   ]
-  # provider = oci.home
+  provider = oci.home
 }
 
 # resource "oci_identity_dynamic_group" "openshift_compute_nodes" {
