@@ -239,29 +239,29 @@ data "oci_identity_availability_domain" "availability_domain" {
 }
 
 ##Defined tag namespace. Use to mark instance roles and configure instance policy
-resource "oci_identity_tag_namespace" "openshift_tags" {
-  compartment_id = var.compartment_ocid
-  description    = "Used for track openshift related resources and policies"
-  is_retired     = "false"
-  name           = "openshift-${var.cluster_name}"
-  provider       = oci.home
-}
+# resource "oci_identity_tag_namespace" "openshift_tags" {
+#   compartment_id = var.compartment_ocid
+#   description    = "Used for track openshift related resources and policies"
+#   is_retired     = "false"
+#   name           = "openshift-${var.cluster_name}"
+#   provider       = oci.home
+# }
 
-resource "oci_identity_tag" "openshift_instance_role" {
-  description      = "Describe instance role inside OpenShift cluster"
-  is_cost_tracking = "false"
-  is_retired       = "false"
-  name             = "instance-role"
-  tag_namespace_id = oci_identity_tag_namespace.openshift_tags.id
-  validator {
-    validator_type = "ENUM"
-    values = [
-      "control_plane",
-      "compute",
-    ]
-  }
-  provider = oci.home
-}
+# resource "oci_identity_tag" "openshift_instance_role" {
+#   description      = "Describe instance role inside OpenShift cluster"
+#   is_cost_tracking = "false"
+#   is_retired       = "false"
+#   name             = "instance-role"
+#   tag_namespace_id = oci_identity_tag_namespace.openshift_tags.id
+#   validator {
+#     validator_type = "ENUM"
+#     values = [
+#       "control_plane",
+#       "compute",
+#     ]
+#   }
+#   provider = oci.home
+# }
 
 data "oci_core_compute_global_image_capability_schemas" "image_capability_schemas" {
 }
@@ -717,24 +717,17 @@ resource "oci_load_balancer_listener" "openshift_cluster_infra-mcs_2" {
 #   name           = "${var.cluster_name}_control_plane_nodes"
 #   provider       = oci.home
 # }
-data "oci_identity_dynamic_groups" "openshift_control_plane_nodes" {
-  #Required
-  compartment_id = var.tenancy_ocid
-
-  #Optional
-  name = var.dynamic_group_name
-}
 
 resource "oci_identity_policy" "openshift_control_plane_nodes" {
   compartment_id = var.compartment_ocid
   description    = "OpenShift control_plane nodes instance principal"
   name           = "${var.cluster_name}_control_plane_nodes"
   statements = [
-    "Allow dynamic-group ${data.oci_identity_dynamic_groups.openshift_control_plane_nodes.name} to manage volume-family in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${data.oci_identity_dynamic_groups.openshift_control_plane_nodes.name} to manage instance-family in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${data.oci_identity_dynamic_groups.openshift_control_plane_nodes.name} to manage security-lists in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${data.oci_identity_dynamic_groups.openshift_control_plane_nodes.name} to use virtual-network-family in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${data.oci_identity_dynamic_groups.openshift_control_plane_nodes.name} to manage load-balancers in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${var.dynamic_group_name} to manage volume-family in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${var.dynamic_group_name} to manage instance-family in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${var.dynamic_group_name} to manage security-lists in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${var.dynamic_group_name} to use virtual-network-family in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${var.dynamic_group_name} to manage load-balancers in compartment id ${var.compartment_ocid}",
   ]
   provider = oci.home
 }
@@ -824,9 +817,9 @@ resource "oci_core_instance_configuration" "control_plane_node_config" {
         ]
         subnet_id = oci_core_subnet.private.id
       }
-      defined_tags = {
-        "openshift-${var.cluster_name}.instance-role" = "control_plane"
-      }
+      # defined_tags = {
+      #   "openshift-${var.cluster_name}.instance-role" = "control_plane"
+      # }
       shape = var.control_plane_shape
       shape_config {
         memory_in_gbs = var.control_plane_memory
@@ -910,9 +903,9 @@ resource "oci_core_instance_configuration" "compute_node_config" {
         ]
         subnet_id = oci_core_subnet.private.id
       }
-      defined_tags = {
-        "openshift-${var.cluster_name}.instance-role" = "compute"
-      }
+      # defined_tags = {
+      #   "openshift-${var.cluster_name}.instance-role" = "compute"
+      # }
       shape = var.compute_shape
       shape_config {
         memory_in_gbs = var.compute_memory
