@@ -50,31 +50,6 @@ data "oci_identity_availability_domain" "availability_domain" {
   ad_number      = "1"
 }
 
-##Defined tag namespace. Use to mark instance roles and configure instance policy
-# resource "oci_identity_tag_namespace" "openshift_tags" {
-#   compartment_id = var.compartment_ocid
-#   description    = "Used for track openshift related resources and policies"
-#   is_retired     = "false"
-#   name           = "openshift-${var.cluster_name}"
-#   provider       = oci.home
-# }
-
-# resource "oci_identity_tag" "openshift_instance_role" {
-#   description      = "Describe instance role inside OpenShift cluster"
-#   is_cost_tracking = "false"
-#   is_retired       = "false"
-#   name             = "instance-role"
-#   tag_namespace_id = oci_identity_tag_namespace.openshift_tags.id
-#   validator {
-#     validator_type = "ENUM"
-#     values = [
-#       "control_plane",
-#       "compute",
-#     ]
-#   }
-#   provider = oci.home
-# }
-
 data "oci_core_compute_global_image_capability_schemas" "image_capability_schemas" {
 }
 
@@ -98,20 +73,6 @@ resource "oci_core_image" "openshift_image" {
     source_image_type = "QCOW2"
   }
 }
-
-resource "oci_core_shape_management" "imaging_control_plane_shape" {
-  count          = local.create_openshift_instance_pools ? 1 : 0
-  compartment_id = var.compartment_ocid
-  image_id       = oci_core_image.openshift_image[0].id
-  shape_name     = var.control_plane_shape
-}
-
-# resource "oci_core_shape_management" "imaging_compute_shape" {
-#   count          = local.create_openshift_instance_pools ? 1 : 0
-#   compartment_id = var.compartment_ocid
-#   image_id       = oci_core_image.openshift_image[0].id
-#   shape_name     = var.compute_shape
-# }
 
 resource "oci_core_compute_image_capability_schema" "openshift_image_capability_schema" {
   count                                               = local.create_openshift_instance_pools ? 1 : 0
@@ -522,13 +483,6 @@ resource "oci_load_balancer_listener" "openshift_cluster_infra-mcs_2" {
   protocol                 = "TCP"
 }
 
-# resource "oci_identity_dynamic_group" "openshift_control_plane_nodes" {
-#   compartment_id = var.tenancy_ocid
-#   description    = "OpenShift control_plane nodes"
-#   matching_rule  = "all {instance.compartment.id='${var.compartment_ocid}', tag.openshift-${var.cluster_name}.instance-role.value='control_plane'}"
-#   name           = "${var.cluster_name}_control_plane_nodes"
-#   provider       = oci.home
-# }
 
 resource "oci_identity_policy" "openshift_control_plane_nodes" {
   compartment_id = var.compartment_ocid
@@ -543,14 +497,6 @@ resource "oci_identity_policy" "openshift_control_plane_nodes" {
   ]
   provider = oci.home
 }
-
-# resource "oci_identity_dynamic_group" "openshift_compute_nodes" {
-#   compartment_id = var.tenancy_ocid
-#   description    = "OpenShift compute nodes"
-#   matching_rule  = "all {instance.compartment.id='${var.compartment_ocid}', tag.openshift-${var.cluster_name}.instance-role.value='compute'}"
-#   name           = "${var.cluster_name}_compute_nodes"
-#   provider       = oci.home
-# }
 
 resource "oci_dns_zone" "openshift" {
   compartment_id = var.compartment_ocid
