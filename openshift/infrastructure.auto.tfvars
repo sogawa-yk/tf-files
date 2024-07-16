@@ -1,6 +1,6 @@
 region = "ap-seoul-1"
 
-zone_dns = "openshift-demo.devcluster.openshift.com"
+zone_dns = "splat-oci.devcluster.openshift.com"
 
 control_plane_count = 3
 
