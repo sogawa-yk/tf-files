@@ -50,5 +50,5 @@ enable_private_dns = false
 
 dynamic_group_name = "member-yuki.sogawa_dynamic_group"
 
-shapes = ["VM.Standard3.Flex", "VM.Optimized3.Flex", "VM.Standard.E4.Flex"]
+shapes = ["VM.Standard3.Flex", "VM.Standard.E3.Flex", "VM.Standard.E4.Flex"]
 
