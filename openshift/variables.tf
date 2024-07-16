@@ -12,11 +12,6 @@ variable "control_plane_count" {
   type        = number
   description = "The number of control_plane nodes in the cluster. The default value is 3. "
 }
-variable "control_plane_shape" {
-  default     = "VM.Standard.E4.Flex"
-  type        = string
-  description = "Compute shape of the control_plane nodes. The default shape is VM.Standard.E4.Flex. For more detail regarding compute shapes, please visit https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm ."
-}
 variable "control_plane_ocpu" {
   default     = 4
   type        = number
@@ -62,11 +57,7 @@ variable "compute_count" {
   type        = number
   description = "The number of compute nodes in the cluster. The default value is 3. "
 }
-# variable "compute_shape" {
-#   default     = "VM.Standard.E4.Flex"
-#   type        = string
-#   description = "Compute shape of the compute nodes. The default shape is VM.Standard.E4.Flex. For more detail regarding compute shapes, please visit https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm "
-# }
+
 variable "compute_ocpu" {
   default     = 4
   type        = number

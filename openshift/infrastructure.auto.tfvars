@@ -4,7 +4,6 @@ zone_dns = "splat-oci.devcluster.openshift.com"
 
 control_plane_count = 3
 
-control_plane_shape = "VM.Standard.E4.Flex"
 
 control_plane_ocpu = 2
 
@@ -15,8 +14,6 @@ control_plane_boot_size = 512 # 1024
 control_plane_boot_volume_vpus_per_gb = 90
 
 compute_count = 3
-
-# compute_shape = "VM.Standard.E4.Flex"
 
 compute_ocpu = 1
 
