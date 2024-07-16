@@ -655,9 +655,6 @@ resource "oci_core_instance" "control_plane_node" {
     source_type             = "image"
   }
 
-  metadata = {
-    ssh_authorized_keys = file("~/.ssh/id_rsa.pub")
-  }
 }
 
 
@@ -692,9 +689,6 @@ resource "oci_core_instance" "compute_node" {
     source_type             = "image"
   }
 
-  metadata = {
-    ssh_authorized_keys = file("~/.ssh/id_rsa.pub")
-  }
 }
 
 
