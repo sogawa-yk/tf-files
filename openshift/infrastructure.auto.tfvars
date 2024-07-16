@@ -2,7 +2,7 @@ region = "ap-seoul-1"
 
 zone_dns = "openshift-demo.devcluster.openshift.com"
 
-control_plane_count = 1
+control_plane_count = 3
 
 control_plane_shape = "VM.Standard.E4.Flex"
 
@@ -14,9 +14,9 @@ control_plane_boot_size = 512 # 1024
 
 control_plane_boot_volume_vpus_per_gb = 90
 
-compute_count = 1
+compute_count = 3
 
-compute_shape = "VM.Standard.E4.Flex"
+# compute_shape = "VM.Standard.E4.Flex"
 
 compute_ocpu = 1
 
@@ -49,3 +49,6 @@ openshift_image_source_uri = "https://objectstorage.ap-seoul-1.oraclecloud.com/p
 enable_private_dns = false
 
 dynamic_group_name = "member-yuki.sogawa_dynamic_group"
+
+shapes = ["VM.Standard3.Flex", "VM.Optimized3.Flex", "VM.Standard.E5.Flex"]
+
