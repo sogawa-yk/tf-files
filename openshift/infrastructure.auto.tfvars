@@ -1,6 +1,6 @@
 region = "ap-seoul-1"
 
-zone_dns = "splat-oci.devcluster.openshift.com"
+zone_dns = "yusogawa.devcluster.openshift.com" # RedHatのコンソールで設定したBase domain
 
 control_plane_count = 3
 
