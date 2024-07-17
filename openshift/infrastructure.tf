@@ -694,7 +694,7 @@ resource "oci_load_balancer_backend" "control_plane_infra_mcs_backend" {
   }
 
   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_int_lb.id
-  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_infra_mcs_backend.name
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_infra-mcs_backend.name
   ip_address       = each.value.private_ip
   port             = 22623
   weight           = 1
@@ -706,7 +706,7 @@ resource "oci_load_balancer_backend" "control_plane_infra_mcs_backend_2" {
   }
 
   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_int_lb.id
-  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_infra_mcs_backend_2.name
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_infra-mcs_backend_2.name
   ip_address       = each.value.private_ip
   port             = 22624
   weight           = 1
