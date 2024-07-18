@@ -638,103 +638,102 @@ resource "oci_core_instance" "compute_node" {
 }
 
 # バックエンド定義
-# バックエンドセットの定義（既に定義されていると仮定）
 
-# resource "oci_load_balancer_backend" "control_plane_api_backend_external" {
-#   for_each = {
-#     for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
-#   }
+resource "oci_load_balancer_backend" "control_plane_api_backend_external" {
+  for_each = {
+    for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
+  }
 
-#   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
-#   backendset_name  = oci_load_balancer_backend_set.openshift_cluster_api_backend_external.name
-#   ip_address       = each.value.private_ip
-#   port             = 6443
-#   weight           = 1
-# }
+  load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_api_backend_external.name
+  ip_address       = each.value.private_ip
+  port             = 6443
+  weight           = 1
+}
 
-# resource "oci_load_balancer_backend" "control_plane_ingress_https_backend" {
-#   for_each = {
-#     for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
-#   }
+resource "oci_load_balancer_backend" "control_plane_ingress_https_backend" {
+  for_each = {
+    for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
+  }
 
-#   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
-#   backendset_name  = oci_load_balancer_backend_set.openshift_cluster_ingress_https_backend.name
-#   ip_address       = each.value.private_ip
-#   port             = 443
-#   weight           = 1
-# }
+  load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_ingress_https_backend.name
+  ip_address       = each.value.private_ip
+  port             = 443
+  weight           = 1
+}
 
-# resource "oci_load_balancer_backend" "control_plane_ingress_http_backend" {
-#   for_each = {
-#     for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
-#   }
+resource "oci_load_balancer_backend" "control_plane_ingress_http_backend" {
+  for_each = {
+    for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
+  }
 
-#   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
-#   backendset_name  = oci_load_balancer_backend_set.openshift_cluster_ingress_http_backend.name
-#   ip_address       = each.value.private_ip
-#   port             = 80
-#   weight           = 1
-# }
+  load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_ingress_http_backend.name
+  ip_address       = each.value.private_ip
+  port             = 80
+  weight           = 1
+}
 
-# resource "oci_load_balancer_backend" "control_plane_api_backend_internal" {
-#   for_each = {
-#     for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
-#   }
+resource "oci_load_balancer_backend" "control_plane_api_backend_internal" {
+  for_each = {
+    for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
+  }
 
-#   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_int_lb.id
-#   backendset_name  = oci_load_balancer_backend_set.openshift_cluster_api_backend_internal.name
-#   ip_address       = each.value.private_ip
-#   port             = 6443
-#   weight           = 1
-# }
+  load_balancer_id = oci_load_balancer_load_balancer.openshift_api_int_lb.id
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_api_backend_internal.name
+  ip_address       = each.value.private_ip
+  port             = 6443
+  weight           = 1
+}
 
-# resource "oci_load_balancer_backend" "control_plane_infra_mcs_backend" {
-#   for_each = {
-#     for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
-#   }
+resource "oci_load_balancer_backend" "control_plane_infra_mcs_backend" {
+  for_each = {
+    for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
+  }
 
-#   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_int_lb.id
-#   backendset_name  = oci_load_balancer_backend_set.openshift_cluster_infra-mcs_backend.name
-#   ip_address       = each.value.private_ip
-#   port             = 22623
-#   weight           = 1
-# }
+  load_balancer_id = oci_load_balancer_load_balancer.openshift_api_int_lb.id
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_infra-mcs_backend.name
+  ip_address       = each.value.private_ip
+  port             = 22623
+  weight           = 1
+}
 
-# resource "oci_load_balancer_backend" "control_plane_infra_mcs_backend_2" {
-#   for_each = {
-#     for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
-#   }
+resource "oci_load_balancer_backend" "control_plane_infra_mcs_backend_2" {
+  for_each = {
+    for idx in range(var.control_plane_count) : idx => oci_core_instance.control_plane_node[idx]
+  }
 
-#   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_int_lb.id
-#   backendset_name  = oci_load_balancer_backend_set.openshift_cluster_infra-mcs_backend_2.name
-#   ip_address       = each.value.private_ip
-#   port             = 22624
-#   weight           = 1
-# }
+  load_balancer_id = oci_load_balancer_load_balancer.openshift_api_int_lb.id
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_infra-mcs_backend_2.name
+  ip_address       = each.value.private_ip
+  port             = 22624
+  weight           = 1
+}
 
-# resource "oci_load_balancer_backend" "compute_ingress_https_backend" {
-#   for_each = {
-#     for idx in range(var.compute_count) : idx => oci_core_instance.compute_node[idx]
-#   }
+resource "oci_load_balancer_backend" "compute_ingress_https_backend" {
+  for_each = {
+    for idx in range(var.compute_count) : idx => oci_core_instance.compute_node[idx]
+  }
 
-#   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
-#   backendset_name  = oci_load_balancer_backend_set.openshift_cluster_ingress_https_backend.name
-#   ip_address       = each.value.private_ip
-#   port             = 443
-#   weight           = 1
-# }
+  load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_ingress_https_backend.name
+  ip_address       = each.value.private_ip
+  port             = 443
+  weight           = 1
+}
 
-# resource "oci_load_balancer_backend" "compute_ingress_http_backend" {
-#   for_each = {
-#     for idx in range(var.compute_count) : idx => oci_core_instance.compute_node[idx]
-#   }
+resource "oci_load_balancer_backend" "compute_ingress_http_backend" {
+  for_each = {
+    for idx in range(var.compute_count) : idx => oci_core_instance.compute_node[idx]
+  }
 
-#   load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
-#   backendset_name  = oci_load_balancer_backend_set.openshift_cluster_ingress_http_backend.name
-#   ip_address       = each.value.private_ip
-#   port             = 80
-#   weight           = 1
-# }
+  load_balancer_id = oci_load_balancer_load_balancer.openshift_api_apps_lb.id
+  backendset_name  = oci_load_balancer_backend_set.openshift_cluster_ingress_http_backend.name
+  ip_address       = each.value.private_ip
+  port             = 80
+  weight           = 1
+}
 
 
 
