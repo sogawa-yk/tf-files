@@ -31,7 +31,7 @@ tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaa3mb7wrcy2ls3u3jsy2soq5ck3lc3q4mczitpd
 
 compartment_ocid = "ocid1.compartment.oc1..aaaaaaaanxm4oucgt5pkgd7sw2vouvckvvxan7ca2lirowaao7krnzlkdkhq"
 
-cluster_name = "ocidemo"
+cluster_name = "demo"
 
 vcn_cidr = "10.0.0.0/16"
 
@@ -41,7 +41,7 @@ private_cidr = "10.0.16.0/20"
 
 public_cidr = "10.0.0.0/20"
 
-openshift_image_source_uri = "https://objectstorage.ap-seoul-1.oraclecloud.com/p/Vg2Z03TKsPaymFLUXumBQRaJ2ksf2Lk8Z6_zA8yvPm8wSGBipJVITPIFJRqAtFet/n/orasejapan/b/forOpenShift/o/1721000c-91c3-4ffb-a70c-a64345a4dc3e-discovery%20(1).iso"
+openshift_image_source_uri = "https://objectstorage.ap-seoul-1.oraclecloud.com/p/evVdDbVV0VRkAx1psRAus9BiodLXK1wN0IM-J_dX9oXqz2pA4T8EfEWjZDJqrA0G/n/orasejapan/b/forOpenShift/o/39847e55-da43-4c16-9e70-2c67d163cbac-discovery.iso"
 
 enable_private_dns = false
 
