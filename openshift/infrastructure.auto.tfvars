@@ -41,7 +41,7 @@ private_cidr = "10.0.16.0/20"
 
 public_cidr = "10.0.0.0/20"
 
-openshift_image_source_uri = "https://objectstorage.ap-seoul-1.oraclecloud.com/p/evVdDbVV0VRkAx1psRAus9BiodLXK1wN0IM-J_dX9oXqz2pA4T8EfEWjZDJqrA0G/n/orasejapan/b/forOpenShift/o/39847e55-da43-4c16-9e70-2c67d163cbac-discovery.iso"
+openshift_image_source_uri = "https://objectstorage.ap-seoul-1.oraclecloud.com/p/HiIBsuxxYHXcVW3E-j2PXGaI_CNYzUl8oEv6TP9dnY1vPJw0e0TN3oGk2x5BzIIp/n/orasejapan/b/forOpenShift/o/39847e55-da43-4c16-9e70-2c67d163cbac-discovery%20(1).iso"
 
 enable_private_dns = false
 
