@@ -519,17 +519,17 @@ resource "oci_dns_rrset" "openshift_api" {
   zone_name_or_id = oci_dns_zone.openshift.id
 }
 
-# resource "oci_dns_rrset" "openshift_apps" {
-#   domain = "*.apps.${var.cluster_name}.${var.zone_dns}"
-#   items {
-#     domain = "*.apps.${var.cluster_name}.${var.zone_dns}"
-#     rdata  = oci_load_balancer_load_balancer.openshift_api_apps_lb.ip_address_details[0].ip_address
-#     rtype  = "A"
-#     ttl    = "3600"
-#   }
-#   rtype           = "A"
-#   zone_name_or_id = oci_dns_zone.openshift.id
-# }
+resource "oci_dns_rrset" "openshift_apps" {
+  domain = "*.apps.${var.cluster_name}.${var.zone_dns}"
+  items {
+    domain = "*.apps.${var.cluster_name}.${var.zone_dns}"
+    rdata  = oci_load_balancer_load_balancer.openshift_api_apps_lb.ip_address_details[0].ip_address
+    rtype  = "A"
+    ttl    = "3600"
+  }
+  rtype           = "A"
+  zone_name_or_id = oci_dns_zone.openshift.id
+}
 
 resource "oci_dns_rrset" "openshift_api_int" {
   domain = "api-int.${var.cluster_name}.${var.zone_dns}"
