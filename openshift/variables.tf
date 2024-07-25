@@ -62,11 +62,11 @@ variable "compute_count" {
   type        = number
   description = "The number of compute nodes in the cluster. The default value is 3. "
 }
-# variable "compute_shape" {
-#   default     = "VM.Standard.E4.Flex"
-#   type        = string
-#   description = "Compute shape of the compute nodes. The default shape is VM.Standard.E4.Flex. For more detail regarding compute shapes, please visit https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm "
-# }
+variable "compute_shape" {
+  default     = "VM.Standard.E4.Flex"
+  type        = string
+  description = "Compute shape of the compute nodes. The default shape is VM.Standard.E4.Flex. For more detail regarding compute shapes, please visit https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm "
+}
 variable "compute_ocpu" {
   default     = 4
   type        = number
@@ -184,9 +184,4 @@ variable "dynamic_group_name" {
   type        = string
   description = "Your dynamic group name."
   default     = false
-}
-
-variable "shapes" {
-  type        = list(string)
-  description = "List of shapes for the instances"
 }

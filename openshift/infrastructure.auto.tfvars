@@ -1,6 +1,6 @@
 region = "ap-seoul-1"
 
-zone_dns = "openshift-demo.devcluster.openshift.com"
+zone_dns = "ochacafe-openshift.net"
 
 control_plane_count = 3
 
@@ -32,8 +32,6 @@ load_balancer_shape_details_minimum_bandwidth_in_mbps = 10
 
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaa3mb7wrcy2ls3u3jsy2soq5ck3lc3q4mczitpdaymbuazc5tkguca"
 
-compartment_ocid = "ocid1.compartment.oc1..aaaaaaaanxm4oucgt5pkgd7sw2vouvckvvxan7ca2lirowaao7krnzlkdkhq"
-
 cluster_name = "ocidemo"
 
 vcn_cidr = "10.0.0.0/16"
@@ -44,11 +42,8 @@ private_cidr = "10.0.16.0/20"
 
 public_cidr = "10.0.0.0/20"
 
-openshift_image_source_uri = "https://objectstorage.ap-seoul-1.oraclecloud.com/p/YDcMb_eYIryZUapcSfr1q9txhHkv1tgx6U3heQjA_Ub0kx6FXLXbsQZpVvVWS9iF/n/orasejapan/b/forOpenShift/o/1721000c-91c3-4ffb-a70c-a64345a4dc3e-discovery.iso"
+openshift_image_source_uri = "https://objectstorage.ca-toronto-1.oraclecloud.com/p/zO9PVhL-7MDpKYe-rlclbjamAr7KCMhbb7u4Ky0Fn31B_hLzXLIcChZ6PlIZbiyU/n/orasejapan/b/setup/o/231b0234-af6e-4c42-a137-fc75e8619bb6-discovery.iso"
 
 enable_private_dns = false
 
 dynamic_group_name = "member-yuki.sogawa_dynamic_group"
-
-shapes = ["VM.Standard3.Flex", "VM.Standard.E3.Flex", "VM.Standard.E4.Flex"]
-
