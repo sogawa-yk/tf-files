@@ -26,12 +26,12 @@ stringData:
   config.yaml: |
     useInstancePrincipals: true
     compartment: ocid1.compartment.oc1..aaaaaaaanxm4oucgt5pkgd7sw2vouvckvvxan7ca2lirowaao7krnzlkdkhq
-    vcn: ocid1.vcn.oc1.ap-seoul-1.amaaaaaassl65iqa7ut3m7kwagsaswmzhy5ohjwzch7menlijvhvy7irifwq
+    vcn: ocid1.vcn.oc1.ap-seoul-1.amaaaaaassl65iqa2zuavzprukobfkczu564iiiy2fdiawxgni6eaxejyrtq
     loadBalancer:
-      subnet1: ocid1.subnet.oc1.ap-seoul-1.aaaaaaaao2iuiryte2hndb74k2glrn7snmcbvf3456l7n5czvye2h3tgklna
+      subnet1: ocid1.subnet.oc1.ap-seoul-1.aaaaaaaaewemoyf4wgwos3pbvccagadiphczc64qbpdc5jszwmz6qa6p7ndq
       securityListManagementMode: Frontend
       securityLists:
-        ocid1.subnet.oc1.ap-seoul-1.aaaaaaaao2iuiryte2hndb74k2glrn7snmcbvf3456l7n5czvye2h3tgklna: ocid1.securitylist.oc1.ap-seoul-1.aaaaaaaailbfi5ai2vfj2myqnvp2g3vbjw6nw3kjjhsmcxzvwkvgmam75jvq
+        ocid1.subnet.oc1.ap-seoul-1.aaaaaaaaewemoyf4wgwos3pbvccagadiphczc64qbpdc5jszwmz6qa6p7ndq: ocid1.securitylist.oc1.ap-seoul-1.aaaaaaaabqzcjhrqkndwm66e2mv4wiigvxb2qcg4aelxqbsmdapch2czz4zq
     rateLimiter:
       rateLimitQPSRead: 20.0
       rateLimitBucketRead: 5
