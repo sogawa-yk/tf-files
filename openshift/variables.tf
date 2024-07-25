@@ -183,5 +183,4 @@ variable "enable_private_dns" {
 variable "dynamic_group_name" {
   type        = string
   description = "Your dynamic group name."
-  default     = false
 }
