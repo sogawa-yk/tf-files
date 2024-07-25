@@ -36,3 +36,5 @@ terraform.rc
 
 # Ignore pluralith
 .pluralith
+
+openshift/custom_manifests/
