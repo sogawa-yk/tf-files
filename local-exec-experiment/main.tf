@@ -9,7 +9,7 @@ resource "null_resource" "example" {
     command = <<EOT
       if command -v yum > /dev/null 2>&1; then
         echo 'yum is available, proceeding with mysql installation'
-        sudo yum install -y mysql > /tmp/mysql_install.log 2>&1
+        yum install -y mysql > /tmp/mysql_install.log 2>&1
         echo 'Installation log:'
         cat /tmp/mysql_install.log
       else
