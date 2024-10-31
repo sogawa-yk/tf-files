@@ -5,7 +5,8 @@ provider "oci" {
 }
 
 resource "null_resource" "example" {
+  # OS情報の出力
   provisioner "local-exec" {
-    command = "echo 'Hello, World!' > /tmp/hello_world.txt"
+    command = "echo 'Hello, World!' > /tmp/hello_world.txt && uname -a > /tmp/os_info.txt && cat /tmp/os_info.txt"
   }
 }
